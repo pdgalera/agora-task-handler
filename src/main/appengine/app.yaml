@@ -15,6 +15,8 @@
 runtime: java11
 instance_class: F4
 
+service: agora-task-handler
+
 # [START gae_java11_task_handler_secured]
 handlers:
 - url: /process-batch

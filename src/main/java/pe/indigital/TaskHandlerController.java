@@ -49,4 +49,23 @@ public class TaskHandlerController {
 
     return output;
   }
+
+  @RequestMapping(
+          value = " /process-batch/test",
+          method = RequestMethod.POST,
+          consumes = "application/octet-stream")
+  @ResponseStatus(HttpStatus.OK)
+  public String taskHandler2(@RequestBody String body) {
+    String output;
+    output = String.format("Received task with payload %s", body);
+    System.out.println(output);
+
+    Map<String, Object> payload = new Gson().fromJson(body, Map.class);
+
+    logger.info("Payload: " + payload);
+
+    logger.info("Payload String: " + new Gson().toJson(payload));
+
+    return output;
+  }
 }
