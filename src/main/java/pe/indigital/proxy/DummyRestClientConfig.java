@@ -4,31 +4,31 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pe.indigital.config.RestClientConfig;
-import pe.indigital.config.TalonOneRestClient;
+import pe.indigital.config.DummyRestClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.logging.Logger;
 
 @Configuration
-public class TalonOneRestClientConfig {
+public class DummyRestClientConfig {
 
-    private static final Logger logger = Logger.getLogger(TalonOneRestClientConfig.class.getName());
+    private static final Logger logger = Logger.getLogger(DummyRestClientConfig.class.getName());
 
-    @Value("${services-api.talon-one.base-url}")
+    @Value("${services-api.dummy.base-url}")
     private String baseUrl;
-    @Value("${services-api.talon-one.connect-timeout}")
+    @Value("${services-api.dummy.connect-timeout}")
     private long connectTimeout;
-    @Value("${services-api.talon-one.read-timeout}")
+    @Value("${services-api.dummy.read-timeout}")
     private long readTimeout;
-    @Value("${services-api.talon-one.write-timeout}")
+    @Value("${services-api.dummy.write-timeout}")
     private long writeTimeout;
-    @Value("${services-api.talon-one.max-request}")
+    @Value("${services-api.dummy.max-request}")
     private int maxRequest;
 
     @Bean
-    public TalonOneRestClient talonOneRestClient() {
-        logger.info(String.format("Create TalonOne Rest endpoint URL: %s",
+    public DummyRestClient dummyRestClient() {
+        logger.info(String.format("Create Dummy Rest endpoint URL: %s",
                 baseUrl));
 
         return new Retrofit.Builder()
@@ -37,7 +37,7 @@ public class TalonOneRestClientConfig {
                                 readTimeout, writeTimeout))
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create()).build()
-                .create(TalonOneRestClient.class);
+                .create(DummyRestClient.class);
     }
 
 }
