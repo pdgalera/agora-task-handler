@@ -26,9 +26,9 @@ public class TaskHandlerController {
   }
 
   @RequestMapping(
-      value = " /handler/test",
-      method = RequestMethod.POST,
-      consumes = "application/octet-stream")
+          value = " /second/test",
+          method = RequestMethod.POST,
+          consumes = "application/octet-stream")
   @ResponseStatus(HttpStatus.OK)
   public String taskHandler(@RequestBody String body) {
     String output;
@@ -44,5 +44,14 @@ public class TaskHandlerController {
     dummyRestClientAdapter.callDummy();
 
     return output;
+  }
+
+  @RequestMapping(
+          value = " /second/test2",
+          method = RequestMethod.GET,
+          consumes = "application/octet-stream")
+  @ResponseStatus(HttpStatus.OK)
+  public String taskHandler2(@RequestBody String body) {
+    return body;
   }
 }
