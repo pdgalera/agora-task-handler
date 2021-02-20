@@ -31,8 +31,8 @@ public class DummyRestClientAdapter {
                 logger.info("ERROR calling Dummy endpoint");
             } else {
                 DummyResponse dummyResponse = response.body();
-                logger.info("INFO reponse " + dummyResponse.dummyName);
-                logger.info("INFO reponse " + dummyResponse.dummyDescription);
+                logger.info("INFO reponse: " + dummyResponse.dummyName);
+                logger.info("INFO reponse: " + dummyResponse.dummyDescription);
             }
         } catch (IOException e) {
             e.printStackTrace();
