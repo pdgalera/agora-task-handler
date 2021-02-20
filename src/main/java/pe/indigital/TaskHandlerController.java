@@ -2,6 +2,7 @@ package pe.indigital;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,9 @@ public class TaskHandlerController {
   private static final Logger logger = Logger.getLogger(TaskHandlerController.class.getName());
 
   private final DummyRestClientAdapter dummyRestClientAdapter;
+
+  @Value("${demo.secret.variable}")
+  private String secretVairableTest;
 
   @Autowired
   public TaskHandlerController(DummyRestClientAdapter dummyRestClientAdapter) {
@@ -43,15 +47,8 @@ public class TaskHandlerController {
 
     dummyRestClientAdapter.callDummy();
 
-    return output;
-  }
+    logger.info("Valor de variable secreta MY_SECRET_VAR: " + secretVairableTest);
 
-  @RequestMapping(
-          value = " /second/test2",
-          method = RequestMethod.GET,
-          consumes = "application/octet-stream")
-  @ResponseStatus(HttpStatus.OK)
-  public String taskHandler2(@RequestBody String body) {
-    return body;
+    return output;
   }
 }
