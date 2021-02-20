@@ -17,7 +17,7 @@ instance_class: F4
 service: task-handler
 # [START gae_java11_task_handler_secured]
 handlers:
-- url: /second/test
+- url: /demo/test
   script: field required but not used
   login: admin
 # [END gae_java11_task_handler_secured]

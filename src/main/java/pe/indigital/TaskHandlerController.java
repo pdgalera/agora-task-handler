@@ -26,7 +26,7 @@ public class TaskHandlerController {
   }
 
   @RequestMapping(
-          value = " /second/test",
+          value = "/demo/test",
           method = RequestMethod.POST,
           consumes = "application/octet-stream")
   @ResponseStatus(HttpStatus.OK)
